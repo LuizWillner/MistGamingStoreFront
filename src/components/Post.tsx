@@ -1,6 +1,10 @@
 // props : {autor: "Luiz Willner", conteudo: "Lorem ipsum, dolor sit amet consectetur..."}
+interface PostProps {
+  autor: string;
+  conteudo: string;
+}
 
-export function Post(props) {
+export function Post(props: PostProps) {
   console.log(props);
   return (
     <div>

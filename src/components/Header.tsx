@@ -1,3 +1,4 @@
+// import "../styles/Header.css"; // tem que importar assim quando usa arquivo .css
 import styles from "../styles/Header.module.css"; // tem que importar assim quando usa arquivo .module.css
 
 export function Header() {

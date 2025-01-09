@@ -3,7 +3,7 @@
 import { Post } from "./components/Post";
 import { Header } from "./components/Header";
 
-import "./styles/App.css";
+import "./global.css";
 
 function App() {
   return (

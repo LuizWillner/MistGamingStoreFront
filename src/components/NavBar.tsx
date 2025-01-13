@@ -36,7 +36,7 @@ export function NavBar() {
             <img
               className="d-none d-md-block"
               src={logo}
-              style={{ width: "30%" }}
+              style={{ width: "25%" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle className="navbar-toggler" aria-controls="menu" />
@@ -50,17 +50,24 @@ export function NavBar() {
                 {" "}
                 Home
               </Nav.Link>
-              <NavDropdown title="Cinema" id="dropdownMenuButton">
+              <NavDropdown title="Jogos" id="dropdownMenuButton">
                 <NavDropdown.Item
                   className="dropdown-item"
-                  href="/listar-ingressos"
+                  href="/listar-jogos"
                 >
                   {" "}
-                  Ingressos
+                  Loja
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  className="dropdown-item"
+                  href="/cadastrar-jogos"
+                >
+                  {" "}
+                  Cadastrar
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="nav-link nav-item" href="/filmes">
-                Filmes
+              <Nav.Link className="nav-link nav-item" href="/categorias">
+                Categorias
               </Nav.Link>
               <Nav.Link className="nav-link nav-item" href="/sobre">
                 Sobre

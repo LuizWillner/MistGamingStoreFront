@@ -1,0 +1,48 @@
+/* Definindo cores do tema */
+:root {
+  /* Tons de cinza */
+  --cinza-0: #222326;
+  --cinza-100: #292e34;
+  --cinza-200: #363c43;
+  --cinza-300: #414b55;
+  --cinza-400: #455159;
+  --cinza-500: #505960;
+  --cinza-600: #64686b;
+  --cinza-700: #9c9ca4;
+
+  /* Tons de azul nublado */
+  --azul-nub-100: #566878;
+  --azul-nub-200: #6f7e87;
+  --azul-nub-300: #6592ae;
+  --azul-nub-350: #6592ae;
+  --azul-nub-400: #6393a6;
+
+  /* Tons de azul claro */
+  --azul-claro-200: #7ebed8;
+  --azul-claro-500: #94e1f2;
+  --verde-agua: #aef2eb;
+
+  /* Tons de branco */
+  --branco-fafafa: #fafafa;
+  --branco-azulado: #d1e6ea;
+}
+
+body {
+  overflow-y: scroll;
+  background-color: var(--cinza-100);
+  color: var(--branco-fafafa);
+  -webkit-font-smoothing: antialiased;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+body,
+input,
+textarea,
+button {
+  font: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* 1 unidade relativa do tamanho de fonte padrão do HTML, que é 16px */
+}

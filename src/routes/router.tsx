@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./Layout";
 import { HomePage } from "../pages/HomePage";
+import { CardsJogoPorDesconto } from "../pages/CardsJogoPorDesconto";
 // import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -12,8 +13,14 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-        // children: [],
+        children: [
+          {
+            path: ":gamesDesconto?",
+            element: <CardsJogoPorDesconto />,
+          },
+        ],
       },
+      // { path: "detalhesGame", element: <DetalhesGame /> },
     ],
   },
 ]);

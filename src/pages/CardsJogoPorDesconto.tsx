@@ -42,7 +42,7 @@ export const CardsJogoPorDesconto = () => {
         loader={<h6>Carregando...</h6>}
         style={{ overflow: "visible" }}
       >
-        <h5 className="mt-4 mb-3 titulo-ingressos">Jogos</h5>
+        <h5 className="mt-4 mb-3 titulo-ingressos">Descontos da semana!</h5>
         <div className="row">
           {data?.pages.map((page) =>
             page.itens.map((game: Game) => (

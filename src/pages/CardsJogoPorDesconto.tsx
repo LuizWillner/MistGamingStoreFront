@@ -68,6 +68,17 @@ export const CardsJogoPorDesconto = () => {
                           minimumFractionDigits: 2,
                           useGrouping: true,
                         })}
+                        <span className="card-text">
+                          R${" "}
+                          {(game.price * game.discount).toLocaleString(
+                            "pt-BR",
+                            {
+                              maximumFractionDigits: 2,
+                              minimumFractionDigits: 2,
+                              useGrouping: true,
+                            }
+                          )}
+                        </span>
                       </p>
                       <button
                         className="btn btn-vermelho w-100"

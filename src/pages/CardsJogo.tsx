@@ -45,6 +45,7 @@ export const CardsJogo = () => {
                   gameId={game.gameId}
                   name={game.name}
                   image={game.image}
+                  trailer={game.trailer}
                   description={game.description}
                   developer={game.developer}
                   publisher={game.publisher}

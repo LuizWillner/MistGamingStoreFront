@@ -5,6 +5,7 @@ export interface Game {
   gameId?: number;
   name: string;
   image: string;
+  trailer: string;
   description: string;
   developer: string;
   publisher: string;

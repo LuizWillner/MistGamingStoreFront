@@ -60,15 +60,12 @@ export function NavBar() {
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   className="dropdown-item"
-                  href="/cadastrar-jogos"
+                  href="/painel-admin"
                 >
                   {" "}
-                  Cadastrar
+                  Painel
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="nav-link nav-item" href="/categorias">
-                Categorias
-              </Nav.Link>
               <Nav.Link className="nav-link nav-item" href="/sobre">
                 Sobre
               </Nav.Link>

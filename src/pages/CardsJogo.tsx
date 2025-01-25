@@ -8,7 +8,9 @@ import { GameCard } from "../components/GameCard";
 
 export const CardsJogo = () => {
   // var { discountMin, discountMax } = useParams();
-  const categoryName = "";
+  const { nomeCategoria } = useParams();
+  console.log(nomeCategoria);
+  const categoryName = nomeCategoria;
   const size = 3;
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =

@@ -39,20 +39,22 @@ export const CardsJogoPorDesconto = () => {
         <div className="row">
           {data?.pages.map((page) =>
             page.itens.map((game: Game) => (
-              <GameCard
-                gameId={game.gameId}
-                name={game.name}
-                image={game.image}
-                description={game.description}
-                developer={game.developer}
-                publisher={game.publisher}
-                price={game.price}
-                discount={game.discount}
-                releaseDate={game.releaseDate}
-                stockQuantity={game.stockQuantity}
-                createdAt={game.createdAt}
-                category={game.category}
-              />
+              <div key={game.gameId} className="col-md-4 mb-4">
+                <GameCard
+                  gameId={game.gameId}
+                  name={game.name}
+                  image={game.image}
+                  description={game.description}
+                  developer={game.developer}
+                  publisher={game.publisher}
+                  price={game.price}
+                  discount={game.discount}
+                  releaseDate={game.releaseDate}
+                  stockQuantity={game.stockQuantity}
+                  createdAt={game.createdAt}
+                  category={game.category}
+                />
+              </div>
             ))
           )}
         </div>

@@ -51,6 +51,28 @@ export const useAPIGame = () => {
         }
       });
 
+  const recuperarGamePaginadoPorCategoria = (config: AxiosRequestConfig) =>
+    axiosInstance
+      .get<ResultadoPaginado<Game>>(
+        URL_GAME_PAGEABLE + "/category/name",
+        config
+      )
+      .then((res) => res.data)
+      .catch((error) => {
+        if (error.response) {
+          // significa que o servidor respondeu, porém com erro
+          throw new CustomError(
+            error.response.data.message,
+            error.response.data.errorCode
+          );
+        } else if (error.request) {
+          // significa que a requisição foi enviada mas o servidor não respondeu
+          throw error;
+        } else {
+          // erro desconhecido
+          throw error;
+        }
+      });
   //   const recuperarItensCarrinho = (idCarrinho: number) =>
   //     axiosInstance
   //       .get<Item_carrinho[]>(URL_ITEM + "/" + String(idCarrinho))
@@ -74,6 +96,7 @@ export const useAPIGame = () => {
   return {
     // recuperarIngressoPorTituloFilme,
     recuperarGamePaginadoPorDesconto,
+    recuperarGamePaginadoPorCategoria,
     // recuperarItensCarrinho,
   };
 };

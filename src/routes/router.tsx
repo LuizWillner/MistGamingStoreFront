@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./Layout";
 import { HomePage } from "../pages/HomePage";
 import { CardsJogoPorDesconto } from "../pages/CardsJogoPorDesconto";
+import { CardsJogo } from "../pages/CardsJogo";
 // import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
         ],
       },
       // { path: "detalhesGame", element: <DetalhesGame /> },
+      { path: "listar-jogos", element: <CardsJogo /> },
     ],
   },
 ]);

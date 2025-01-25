@@ -3,17 +3,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Game } from "../interfaces/game";
 import React from "react";
 import { useGamesPaginadosPorDesconto } from "../hooks/useGamesPaginadosPorDesconto";
+import { GameCard } from "../components/GameCard";
 // import "../styles/CardsIngressoPorSessao.css";
 
 export const CardsJogoPorDesconto = () => {
-  // CardsIngressoPorSessao
-
-  const navigate = useNavigate();
-
-  const detalhesGame = (game: Game) => {
-    navigate(`/detalhesGame`, { state: { data: game } });
-  };
-
   // var { discountMin, discountMax } = useParams();
   const discountMax = 0.99;
   const discountMin = 0;
@@ -46,50 +39,20 @@ export const CardsJogoPorDesconto = () => {
         <div className="row">
           {data?.pages.map((page) =>
             page.itens.map((game: Game) => (
-              <div key={game.gameId} className="col-md-4 mb-4">
-                <div className="card" style={{ backgroundColor: "#1b1b1b" }}>
-                  <div className="card-body">
-                    <div className="card-img-container">
-                      <img src={game.image} alt={`Imagem de ${game.name}`} />
-                    </div>
-                    <div className="card-info w">
-                      <h5 className="card-title ">{game.name}</h5>
-                      <p className="card-text ">{game.developer}</p>
-                      <p className="card-text ">
-                        Categoria:{" "}
-                        <span className="poltrona-number">
-                          {game.category.name}
-                        </span>
-                      </p>
-                      <p className="card-text">
-                        R${" "}
-                        {game.price.toLocaleString("pt-BR", {
-                          maximumFractionDigits: 2,
-                          minimumFractionDigits: 2,
-                          useGrouping: true,
-                        })}
-                        <span className="card-text">
-                          R${" "}
-                          {(game.price * game.discount).toLocaleString(
-                            "pt-BR",
-                            {
-                              maximumFractionDigits: 2,
-                              minimumFractionDigits: 2,
-                              useGrouping: true,
-                            }
-                          )}
-                        </span>
-                      </p>
-                      <button
-                        className="btn btn-vermelho w-100"
-                        onClick={() => detalhesGame(game)}
-                      >
-                        Ver mais
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <GameCard
+                gameId={game.gameId}
+                name={game.name}
+                image={game.image}
+                description={game.description}
+                developer={game.developer}
+                publisher={game.publisher}
+                price={game.price}
+                discount={game.discount}
+                releaseDate={game.releaseDate}
+                stockQuantity={game.stockQuantity}
+                createdAt={game.createdAt}
+                category={game.category}
+              />
             ))
           )}
         </div>

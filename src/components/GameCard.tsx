@@ -1,8 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { Game } from "../interfaces/game";
 import React from "react";
-import { useGamesPaginadosPorDesconto } from "../hooks/useGamesPaginadosPorDesconto";
 
 export const GameCard = (game: Game) => {
   const navigate = useNavigate();

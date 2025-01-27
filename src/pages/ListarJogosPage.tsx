@@ -6,7 +6,7 @@ export const ListarJogosPage = () => {
       <div className="col-lg-2">
         <h5>Categorias</h5>
         <div className="nav flex-column nav-pills">
-          <NavLink aria-current="page" className="nav-link" to="/listar-jogos">
+          <NavLink aria-current="page" className="nav-link" to="/listar-jogos/all">
             Todos
           </NavLink>
           <NavLink aria-current="page" className="nav-link" to="/listar-jogos/RPG Ação">

@@ -10,7 +10,7 @@ export const CardsJogo = () => {
   // var { discountMin, discountMax } = useParams();
   const { nomeCategoria } = useParams();
   console.log(nomeCategoria);
-  const categoryName = nomeCategoria;
+  const categoryName = nomeCategoria != "all" ? nomeCategoria : "";
   const size = 3;
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =

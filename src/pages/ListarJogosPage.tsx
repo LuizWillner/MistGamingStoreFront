@@ -24,8 +24,14 @@ export const ListarJogosPage = () => {
           <NavLink aria-current="page" className="nav-link" to="/listar-jogos/Ação e Aventura">
             Ação e Aventura
           </NavLink>
+          <NavLink aria-current="page" className="nav-link" to="/listar-jogos/Mundo Aberto">
+            Mundo Aberto
+          </NavLink>
           <NavLink aria-current="page" className="nav-link" to="/listar-jogos/FPS">
             FPS
+          </NavLink>
+          <NavLink aria-current="page" className="nav-link" to="/listar-jogos/Hero Shooter">
+            Hero Shooter
           </NavLink>
           <NavLink aria-current="page" className="nav-link" to="/listar-jogos/Esportes">
             Esportes

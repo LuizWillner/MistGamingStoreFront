@@ -5,6 +5,7 @@ import { CardsJogoPorDesconto } from "../pages/CardsJogoPorDesconto";
 import { CardsJogo } from "../pages/CardsJogo";
 import { ListarJogosPage } from "../pages/ListarJogosPage";
 import { DetalhesGame } from "../pages/DetalhesGame";
+import { PainelAdminPage } from "../pages/PainelAdminPage";
 // import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
         ],
       },
       { path: "detalhesGame", element: <DetalhesGame /> },
+      {path: "painel-admin", element: <PainelAdminPage />}
     ],
   },
 ]);

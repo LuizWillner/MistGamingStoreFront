@@ -13,6 +13,6 @@ export interface Game {
   discount: number;
   releaseDate: Date;
   stockQuantity: number;
-  createdAt: Date;
+  createdAt?: Date;
   category: Category;
 }

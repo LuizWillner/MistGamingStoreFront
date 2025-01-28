@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React from "react";
+import React, { useState } from "react";
 import { Game } from "../interfaces/game";
 import { useGameStore } from "../store/useGameStore";
 import { useRemoverGame } from "../hooks/useRemoverGame";
@@ -7,10 +7,13 @@ import { useGamesPaginadosPorCategoria } from "../hooks/useGamesPaginadoPorCateg
 import { useGamesPaginado } from "../hooks/useGamesPaginado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
+import { Spinner } from "react-bootstrap";
 
 
 
 export const TabelaDeGames = () => {
+
+    const [removendoGameId, setRemovendoGameId] = useState<number | null>(null);
 
     const page = useGameStore(s => s.pagina);
     const size = useGameStore(s => s.tamanho);
@@ -34,18 +37,20 @@ export const TabelaDeGames = () => {
     } = useGamesPaginado({page, size, name});
 
     if (carregandoGames) return <h6>Carregando...</h6>;
-    // TODO: Abaixo é que talvez possa colocar o spinner
-    // if(removendoProduto) return <h6>Removendo...</h6>
-
     if (errorGames) throw errorGames;
     if (erroRemoverGame) throw erroRemoverGame;
 
     const games = gamesPaginados!.itens;
 
     const tratarRemocaoGame = (gameId: number) => {
-      removerGame(gameId);
+      setRemovendoGameId(gameId);
+      removerGame(gameId, {
+        onSettled: () => {
+          setRemovendoGameId(null);
+        },
+      });
       setPagina(0);
-    }
+    };
 
     const tratarGameSelecionado = (game: Game) => setGameSelecionado(game);
 
@@ -127,8 +132,19 @@ export const TabelaDeGames = () => {
                   <button 
                     onClick={() => tratarRemocaoGame(game.gameId!)} 
                     className="btn btn-danger btn-sm"
+                    disabled={removendoGame}
                   >
-                    <FontAwesomeIcon icon={faTrashAlt} />
+                    {removendoGameId === game.gameId ? (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    )}
                   </button>
                 </td>
               </tr>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
-// import "../styles/Carrossel.css";
+import "../styles/Carrossel.css";
 
 export const HomePage = () => {
   return (

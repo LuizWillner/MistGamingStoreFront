@@ -23,12 +23,6 @@ export const CarrinhoPage = () => {
     isLoading: carregandoCarrinho,
   } = useRecuperarCarrinho({cartId: 1, userId: 1});
 
-  // Remover Carrinho
-  const {
-    data: carrinhoRemovido,
-    mutate: removerCarrinho
-  } = useRemoverCarrinho({cartId: 1, userId: 1});
-
   // Remover Item do carrinho
   const {
     data: itemRemovido, 
@@ -45,17 +39,8 @@ export const CarrinhoPage = () => {
   } = useAlterarItemCarrinho();
 
 
-  const tratarRemocaoCarrinho = (cartId: number) => {
-    removerCarrinho({cartId: cartId, userId: 1});
-  }
-
   const tratarRemocaoItem = (item: CartItem) => {
     removerItemDoCarrinho(item.cartItemId!);
-
-    if (carrinho?.cartItems && ((carrinho.cartItems?.length - 1) === 0) && !carrinhoRemovido && !removendoItemDoCarrinho) {
-      // Remover carrinho quando não há itens no carrinho e não foi removido ainda
-      tratarRemocaoCarrinho(carrinho.cartId!);
-    }
   };
 
   const tratarAlteracaoItemDoCarrinho = (item: CartItem) => {
@@ -82,8 +67,8 @@ export const CarrinhoPage = () => {
       <div>
         <h5 className="mb-4 ms-3 w titulo-ingressos titulo-sessao-card">Carrinho</h5>
       </div>
-      {(carrinhoRemovido || carrinho?.cartItems.length === 0) && (
-        <p className="m-3 text-warning">O carrinho se encontra vazio!</p>
+      {(carrinho?.cartItems.length === 0) && (
+        <p className="m-3 text-warning">O carrinho está vazio!</p>
       )}
       <div className="table-responsive">
         <table className="table table-striped table-bordered">

@@ -4,14 +4,14 @@ import { Game } from "../interfaces/game";
 import React from "react";
 import { useGamesPaginadosPorCategoria } from "../hooks/useGamesPaginadoPorCategoria";
 import { GameCard } from "../components/GameCard";
-// import "../styles/CardsIngressoPorSessao.css";
+import "../styles/SessaoDeCards.css";
 
 export const CardsJogo = () => {
   // var { discountMin, discountMax } = useParams();
   const { nomeCategoria } = useParams();
   console.log(nomeCategoria);
   const categoryName = nomeCategoria != "todos" ? nomeCategoria : "";
-  const size = 3;
+  const size = 5;
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =
     useGamesPaginadosPorCategoria({
@@ -35,12 +35,12 @@ export const CardsJogo = () => {
         loader={<h6>Carregando...</h6>}
         style={{ overflow: "visible" }}
       >
-        <h5 className="mt-4 mb-3 titulo-ingressos">Jogos</h5>
+        <h5 className="mt-4 mb-3 titulo-sessao-card">Jogos</h5>
         <div className="row">
           {data?.pages.map((page) =>
             page.itens.map((game: Game) => (
               // <div key={game.gameId} className="col-md-4 mb-4">
-              <div key={game.gameId} className="mb-4">
+              <div key={game.gameId} className="col-md-6 mb-4">
                 <GameCard
                   gameId={game.gameId}
                   name={game.name}

@@ -1,6 +1,7 @@
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Game } from "../interfaces/game";
-import React from "react";
+import "../styles/GameCard.css";
 
 export const GameCard = (game: Game) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export const GameCard = (game: Game) => {
   };
 
   return (
-    <div className="card" style={{ backgroundColor: "#1b1b1b" }}>
+    <div className="card" style={{ backgroundColor: "#566878" }}>
       <div className="card-body">
         <div className="card-img-container">
           <img src={game.image} alt={`Imagem de ${game.name}`} />
@@ -20,17 +21,17 @@ export const GameCard = (game: Game) => {
           <p className="card-text ">{game.developer}</p>
           <p className="card-text ">
             Categoria:{" "}
-            <span className="poltrona-number">{game.category.name}</span>
+            <span>{game.category.name}</span>
           </p>
           {game.discount != 0 ? (
-            <p className="card-text">
+            <p className="card-text card-price-old">
               R${" "}
               {game.price.toLocaleString("pt-BR", {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2,
                 useGrouping: true,
               })}
-              <span className="card-text">
+              <span className="card-text discount-badge">
                 R${" "}
                 {(game.price * (1 - game.discount)).toLocaleString("pt-BR", {
                   maximumFractionDigits: 2,
@@ -38,9 +39,16 @@ export const GameCard = (game: Game) => {
                   useGrouping: true,
                 })}
               </span>
+              <span className="card-text discount-value">
+                {(game.discount*100).toLocaleString("pt-BR", {
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                  useGrouping: true,
+                })}% OFF
+              </span>
             </p>
           ) : (
-            <p className="card-text">
+            <p className="card-text default-price-badge">
               R${" "}
               {game.price.toLocaleString("pt-BR", {
                 maximumFractionDigits: 2,
@@ -49,12 +57,12 @@ export const GameCard = (game: Game) => {
               })}
             </p>
           )}
-          <button
-            className="btn btn-vermelho w-100"
-            onClick={() => detalhesGame(game)}
-          >
-            Ver mais
-          </button>
+            <button
+              className="btn btn-sm btn-vermelho w-100"
+              onClick={() => detalhesGame(game)}
+            >
+              Ver mais
+            </button>
         </div>
       </div>
     </div>

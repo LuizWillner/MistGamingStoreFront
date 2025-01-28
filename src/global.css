@@ -25,6 +25,9 @@
   /* Tons de branco */
   --branco-fafafa: #fafafa;
   --branco-azulado: #d1e6ea;
+
+  /* Tons de verde */
+  --verde-check: #62b84d;
 }
 
 body {
@@ -45,4 +48,12 @@ button {
   font: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1rem; /* 1 unidade relativa do tamanho de fonte padrão do HTML, que é 16px */
+}
+
+.btn-vermelho {
+  background-color: var(--azul-nub-350) !important;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  margin: auto;
 }

@@ -1,0 +1,53 @@
+.card-body {
+  display: flex;
+  align-items: start; /* Alinha os itens ao topo */
+}
+
+.card-img-container {
+  flex: 0 0 120px; /* Tamanho fixo para a imagem */
+  overflow: hidden; /* Previne que a imagem 'vaze' */
+}
+
+.card-img-container img {
+  width: 100%; /* Faz a imagem preencher o container */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço disponível sem distorcer */
+}
+
+.card-info {
+  flex: 1; /* Ocupa o restante do espaço */
+  padding-left: 15px; /* Espaço entre a imagem e o texto */
+  color: var(--cinza-0); /* Cor do texto */
+}
+
+.card-text {
+  color: var(--cinza-0); /* Cor do texto */
+}
+
+.card-price-old {
+  color: var(--cinza-700); /* Cor do texto */
+  text-decoration: line-through; /* Texto riscado */
+}
+
+.default-price-badge {
+  display: inline-block;
+  font-weight: 500; /* Texto em negrito */
+}
+
+.discount-badge {
+  display: inline-block;
+  background-color: var(--verde-check);
+  padding: 0.2rem 0.5rem; /* Ajuste o padding conforme necessário */
+  border-radius: 4px; /* Borda arredondada */
+  margin-left: 0.75rem;
+  font-weight: 500; /* Texto em negrito */
+}
+
+.discount-value {
+  display: inline-block;
+  color: var(--verde-check); /* Cor do texto */
+  text-decoration: none !important; /* Remove o sublinhado */
+  margin-left: 0.25rem;
+  font-size: 0.85rem;
+}
+

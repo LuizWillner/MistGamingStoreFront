@@ -4,9 +4,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
 import {
-    faQuestionCircle,
-    faShoppingCart,
-    faSignIn,
     faCartPlus,
     faCheck
   } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +12,7 @@ import { Game } from "../interfaces/game";
 import { CartItemPost } from "../interfaces/cartItem";
 import { useAdicionarItemCarrinho } from "../hooks/useAdicionarItemCarrinho";
 import "../styles/GameCard.css";
+
 
 export const DetalhesGame = () => {
     const location = useLocation();

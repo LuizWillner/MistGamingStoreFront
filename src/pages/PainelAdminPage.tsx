@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
 import { CadastroGameForm } from "../components/CadastroGameForm";
-// import { Pesquisa } from "../components/Pesquisa";
+import { Pesquisa } from "../components/Pesquisa";
 import { TabelaDeGames } from "../components/TabelaDeGames";
 import { Paginacao } from "../components/Paginacao";
 
@@ -19,7 +19,7 @@ export const PainelAdminPage = () => {
           <h5>Lista de Jogos</h5>
           <hr className="mt-0" />
         </div>
-        {/* <Pesquisa /> */}
+        <Pesquisa />
         <TabelaDeGames />
         <Paginacao />
       </Card>

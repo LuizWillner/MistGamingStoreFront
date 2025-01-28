@@ -15,7 +15,7 @@ interface GameStore {
 
 export const useGameStore = create<GameStore>((set) => ({
     pagina: 0,
-    tamanho: 5,
+    tamanho: 10,
     nome: "",
     gameSelecionado: {} as Game,
 

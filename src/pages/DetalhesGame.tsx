@@ -1,6 +1,6 @@
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
 import { Card, Col, Row } from "react-bootstrap";
@@ -49,6 +49,34 @@ export const DetalhesGame = () => {
                     </Row>
                     <Row>
                         <Col md={6}>
+                            {game.discount != 0 ? (
+                                <p className="w">
+                                R${game.price.toLocaleString("pt-BR", {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                    useGrouping: true
+                                })}
+                                    <span>
+                                        <strong>
+                                        R${(game.price * (1-game.discount)).toLocaleString("pt-BR", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                            useGrouping: true
+                                        })}
+                                        </strong>
+                                    </span>
+                                </p>
+                            ) : (
+                                <p className="w">
+                                    <strong>
+                                        R${game.price.toLocaleString("pt-BR", {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                            useGrouping: true
+                                        })}
+                                    </strong>
+                                </p>
+                            )}
                             <p className="w"><strong>Ano de Lançamento:</strong> {formattedReleaseDate}</p>
                             <p className="w"><strong>Desenvolvedora:</strong> {game.developer}</p>
                             <p className="w"><strong>Publicadora:</strong> {game.publisher}</p>

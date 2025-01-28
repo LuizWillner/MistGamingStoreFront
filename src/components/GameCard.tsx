@@ -22,7 +22,7 @@ export const GameCard = (game: Game) => {
             Categoria:{" "}
             <span className="poltrona-number">{game.category.name}</span>
           </p>
-          {game.discount != 1 ? (
+          {game.discount != 0 ? (
             <p className="card-text">
               R${" "}
               {game.price.toLocaleString("pt-BR", {
@@ -32,7 +32,7 @@ export const GameCard = (game: Game) => {
               })}
               <span className="card-text">
                 R${" "}
-                {(game.price * game.discount).toLocaleString("pt-BR", {
+                {(game.price * (1 - game.discount)).toLocaleString("pt-BR", {
                   maximumFractionDigits: 2,
                   minimumFractionDigits: 2,
                   useGrouping: true,

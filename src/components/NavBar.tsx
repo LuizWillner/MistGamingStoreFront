@@ -35,7 +35,7 @@ export function NavBar() {
           {/*Navbar.Brand: A marca ou logo do site*/}
           <Navbar.Brand className="navbar-brand" href="/">
             <img
-              className="d-none d-md-block"
+              className="d-none d-md-block mt-2"
               src={logo}
               style={{ width: "125px" }}
             />

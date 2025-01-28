@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,17 +7,35 @@ import {
     faQuestionCircle,
     faShoppingCart,
     faSignIn,
-    faCartPlus
+    faCartPlus,
+    faCheck
   } from "@fortawesome/free-solid-svg-icons";
 import { Card, Col, Row } from "react-bootstrap";
+import { Game } from "../interfaces/game";
+import { CartItemPost } from "../interfaces/cartItem";
+import { useAdicionarItemCarrinho } from "../hooks/useAdicionarItemCarrinho";
 import "../styles/GameCard.css";
 
 export const DetalhesGame = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [addedToCart, setAddedToCart] = useState(false);
 
     var game = location.state.data;
     console.log(game.trailer);
+
+    const { mutate: cadastrarCartItem, error: errorCadastrarCartItem } = useAdicionarItemCarrinho();
+
+    const tratarAdicionarGameAoCarrinho = (game: Game) => {
+      const newCartItem: CartItemPost = {
+        cartId: 1,
+        userId: 1,
+        gameId: game.gameId!,
+        quantity: 1,
+      };
+      cadastrarCartItem(newCartItem);
+      setAddedToCart(true);
+    };
 
     const handleVoltar = () => {
         navigate(-1);
@@ -91,8 +109,11 @@ export const DetalhesGame = () => {
                                 </p>
                             )}
                             <div className="d-flex align-items-center justify-content-start mt-2">
-                                <button className="btn btn-primary">
-                                    <FontAwesomeIcon icon={faCartPlus} />
+                                <button 
+                                  className={`btn ${addedToCart ? 'btn-success' : 'btn-primary'}`} 
+                                  onClick={() => tratarAdicionarGameAoCarrinho(game)}
+                                >
+                                  {addedToCart ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCartPlus} />}
                                 </button>
                                 <span className="stock-middle">Estoque: {game.stockQuantity}</span>
                             </div>

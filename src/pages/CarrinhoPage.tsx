@@ -100,7 +100,7 @@ export const CarrinhoPage = () => {
           <tbody>
             {carrinho?.cartItems.map((item, index) => (
               <tr key={item.cartItemId} /*className={index % 2 === 0 ? 'table-light' : 'table-secondary'}*/>
-                <td className="align-middle text-center">{item.cartItemId}</td>
+                <td className="align-middle text-center">{index+1}</td>
                 <td className="align-middle text-center">
                   <img src={item.game.image} width="45px"/>
                 </td>

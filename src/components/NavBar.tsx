@@ -65,9 +65,6 @@ export function NavBar() {
               </Nav.Link>
             </Nav>
             <Nav className="navbar-nav ml-auto">
-              <Nav.Link className="nav-link nav-item" href="/ajuda">
-                <FontAwesomeIcon icon={faQuestionCircle} />
-              </Nav.Link>
               <Nav.Link className="nav-link nav-item" href="/carrinho">
                 <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
                 {carrinho?.cartItems.length === 0 && (

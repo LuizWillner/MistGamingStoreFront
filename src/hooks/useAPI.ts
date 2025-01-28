@@ -109,5 +109,36 @@ export const useAPI = <T>(endpoint: string) => {
                     throw error;
                 }
             })
-    return { recuperar, cadastrar, alterar };
+        
+    const removerPorId = (id: number) =>
+        axiosInstance
+            .delete(endpoint + "/" + id)
+            .then(res => res.data)
+            .catch((error) => {
+                if (error.response) {
+                    // significa que o servidor respondeu, porém com erro
+                    console.log("A requisição foi realizada e o servidor respondeu com as seguintes informações: ");
+                    console.log("Mensagem do servidor: ", error.response.data);
+                    console.log("Código de status: ", error.response.status);
+                    throw new CustomError(
+                        error.response.data.message,
+                        error.response.data.errorCode
+                    )
+                }
+                else if (error.request) {
+                    // significa que a requisição foi enviada mas o servidor não respondeu
+                    console.log("A requisição foi realizada mas nenhuma resposta foi recebida.");
+                    console.log("URL Base: ", error.config.baseURL);
+                    console.log("Método de envio: ", error.config.method);
+                    console.log("URL solicitado: ", error.config.url);
+                    throw error;
+                }
+                else {
+                    // erro desconhecido
+                    console.log("Algo aconteceu durante a configuração do pedido que acionou um erro: ", error.message);
+                    throw error;
+                }
+            })
+
+    return { recuperar, cadastrar, alterar, removerPorId };
 }

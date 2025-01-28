@@ -58,7 +58,7 @@ export const GameCard = (game: Game) => {
             </p>
           )}
             <button
-              className="btn btn-sm btn-vermelho w-100"
+              className="btn btn-sm btn-azul-nub w-100"
               onClick={() => detalhesGame(game)}
             >
               Ver mais

@@ -51,7 +51,7 @@ button {
   font-size: 1rem; /* 1 unidade relativa do tamanho de fonte padrão do HTML, que é 16px */
 }
 
-.btn-vermelho {
+.btn-azul-nub {
   background-color: var(--azul-nub-350) !important;
   color: white;
   font-weight: bold;

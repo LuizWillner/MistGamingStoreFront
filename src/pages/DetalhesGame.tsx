@@ -33,7 +33,7 @@ export const DetalhesGame = () => {
     return (
         <>
             <div className="container mt-4">
-                <button onClick={handleVoltar} className="btn btn-vermelho mb-3">
+                <button onClick={handleVoltar} className="btn btn-azul-nub mb-3">
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Voltar
                 </button>
                 <Card className="card-detalhe " style={{backgroundColor: "#566878"}}>
@@ -94,7 +94,7 @@ export const DetalhesGame = () => {
                                 <button className="btn btn-primary">
                                     <FontAwesomeIcon icon={faCartPlus} />
                                 </button>
-                                <span className="align-middle">Estoque: {game.stockQuantity}</span>
+                                <span className="stock-middle">Estoque: {game.stockQuantity}</span>
                             </div>
                             <div className="mt-3">
                                 <p className="w"><strong>Lançamento:</strong> {formattedReleaseDate}</p>

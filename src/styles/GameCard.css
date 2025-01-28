@@ -34,6 +34,15 @@
   font-weight: 500; /* Texto em negrito */
 }
 
+.default-price-badge-detail {
+  display: inline-block;
+  background-color: var(--azul-claro-200);
+  padding: 0.2rem 0.5rem; /* Ajuste o padding conforme necessário */
+  border-radius: 4px; /* Borda arredondada */
+  /* margin-left: 0.75rem; */
+  font-weight: 500; /* Texto em negrito */
+}
+
 .discount-badge {
   display: inline-block;
   background-color: var(--verde-check);
@@ -51,3 +60,17 @@
   font-size: 0.85rem;
 }
 
+.align-middle {
+  color: var(--branco-fafafa); /* Cor do texto */
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem; /* Ajuste conforme necessário */
+}
+
+.description-rounded-background {
+  background-color: var(--cinza-200); /* Cor de fundo */
+  color: var(--branco-fafafa); /* Cor do texto */
+  padding: 1.2rem; /* Espaçamento interno */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+}

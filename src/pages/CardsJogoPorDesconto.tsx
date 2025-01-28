@@ -10,7 +10,7 @@ export const CardsJogoPorDesconto = () => {
   // var { discountMin, discountMax } = useParams();
   const discountMax = 1.0;
   const discountMin = 0.01;
-  const size = 3;
+  const size = 4;
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =
     useGamesPaginadosPorDesconto({

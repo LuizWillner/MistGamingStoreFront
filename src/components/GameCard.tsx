@@ -48,7 +48,7 @@ export const GameCard = (game: Game) => {
               </span>
             </p>
           ) : (
-            <p className="card-text default-price-badge">
+            <p className="card-text default-price-badge-detail">
               R${" "}
               {game.price.toLocaleString("pt-BR", {
                 maximumFractionDigits: 2,

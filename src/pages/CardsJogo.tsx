@@ -11,7 +11,7 @@ export const CardsJogo = () => {
   const { nomeCategoria } = useParams();
   console.log(nomeCategoria);
   const categoryName = nomeCategoria != "todos" ? nomeCategoria : "";
-  const size = 5;
+  const size = 8;
 
   const { data, isLoading, error, fetchNextPage, hasNextPage } =
     useGamesPaginadosPorCategoria({

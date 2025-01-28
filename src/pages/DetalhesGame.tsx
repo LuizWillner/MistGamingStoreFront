@@ -3,8 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
+import {
+    faQuestionCircle,
+    faShoppingCart,
+    faSignIn,
+    faCartPlus
+  } from "@fortawesome/free-solid-svg-icons";
 import { Card, Col, Row } from "react-bootstrap";
-// import '../styles/CardFilmes.css';
+import "../styles/GameCard.css";
 
 export const DetalhesGame = () => {
     const location = useLocation();
@@ -30,8 +36,8 @@ export const DetalhesGame = () => {
                 <button onClick={handleVoltar} className="btn btn-vermelho mb-3">
                     <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Voltar
                 </button>
-                <Card className="card-detalhe " style={{backgroundColor: "#1b1b1b"}}>
-                    <h1 className="mb-4 w">{game.name}</h1>
+                <Card className="card-detalhe " style={{backgroundColor: "#566878"}}>
+                    <h1 className="mb-4 w"><strong>{game.name}</strong></h1>
                     <Row className="mb-3">
                         <Col md={6}>
                             <img src={game.image} alt={game.name} className="card-image-filme" style={{width: '250px'}} />
@@ -50,13 +56,13 @@ export const DetalhesGame = () => {
                     <Row>
                         <Col md={6}>
                             {game.discount != 0 ? (
-                                <p className="w">
+                                <p className="card-text card-price-old">
                                 R${game.price.toLocaleString("pt-BR", {
                                     minimumFractionDigits: 2,
                                     maximumFractionDigits: 2,
                                     useGrouping: true
                                 })}
-                                    <span>
+                                    <span className="card-text discount-badge">
                                         <strong>
                                         R${(game.price * (1-game.discount)).toLocaleString("pt-BR", {
                                             minimumFractionDigits: 2,
@@ -65,9 +71,16 @@ export const DetalhesGame = () => {
                                         })}
                                         </strong>
                                     </span>
+                                    <span className="card-text discount-value">
+                                        {(game.discount*100).toLocaleString("pt-BR", {
+                                            maximumFractionDigits: 2,
+                                            minimumFractionDigits: 2,
+                                            useGrouping: true,
+                                        })}% OFF
+                                    </span>
                                 </p>
                             ) : (
-                                <p className="w">
+                                <p className="card-text default-price-badge-detail">
                                     <strong>
                                         R${game.price.toLocaleString("pt-BR", {
                                             minimumFractionDigits: 2,
@@ -77,12 +90,20 @@ export const DetalhesGame = () => {
                                     </strong>
                                 </p>
                             )}
-                            <p className="w"><strong>Ano de Lançamento:</strong> {formattedReleaseDate}</p>
-                            <p className="w"><strong>Desenvolvedora:</strong> {game.developer}</p>
-                            <p className="w"><strong>Publicadora:</strong> {game.publisher}</p>
-                            <p className="w"><strong>Categoria:</strong> {game.category.name}</p>
+                            <div className="d-flex align-items-center justify-content-start mt-2">
+                                <button className="btn btn-primary">
+                                    <FontAwesomeIcon icon={faCartPlus} />
+                                </button>
+                                <span className="align-middle">Estoque: {game.stockQuantity}</span>
+                            </div>
+                            <div className="mt-3">
+                                <p className="w"><strong>Lançamento:</strong> {formattedReleaseDate}</p>
+                                <p className="w"><strong>Desenvolvedora:</strong> {game.developer}</p>
+                                <p className="w"><strong>Publicadora:</strong> {game.publisher}</p>
+                                <p className="w"><strong>Categoria:</strong> {game.category.name}</p>
+                            </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className="description-rounded-background">
                             <p className="w">{game.description}</p>
                         </Col>
                     </Row>

@@ -29,7 +29,7 @@ export function NavBar() {
       <Navbar
         expand="md"
         variant="dark"
-        className="navbar navbar-background navbar-expand-md "
+        className="navbar navbar-background navbar-expand-md"
       >
         <Container className="container mb-4">
           {/*Navbar.Brand: A marca ou logo do site*/}
@@ -37,18 +37,13 @@ export function NavBar() {
             <img
               className="d-none d-md-block"
               src={logo}
-              style={{ width: "15%" }}
+              style={{ width: "125px" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle className="navbar-toggler" aria-controls="menu" />
-          {/*Navbar.Collapse: itens de navegação que podem ser colapsados em telas menores*/}
-          <Navbar.Collapse className="collapse navbar-collapse" id="menu">
-            {" "}
-            {/*Nav: container para os itens de navegação em si*/}
-            <Nav className="navbar-nav mr-auto">
-              {/*NavLink: Links individuais de navegação */}
+          <Navbar.Collapse className="collapse navbar-collapse">
+            <Nav className="navbar-nav mx-auto">
               <Nav.Link className="nav-link nav-item" href="/">
-                {" "}
                 Home
               </Nav.Link>
               <NavDropdown title="Jogos" id="dropdownMenuButton">
@@ -56,14 +51,12 @@ export function NavBar() {
                   className="dropdown-item"
                   href="/listar-jogos"
                 >
-                  {" "}
                   Loja
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   className="dropdown-item"
                   href="/painel-admin"
                 >
-                  {" "}
                   Painel
                 </NavDropdown.Item>
               </NavDropdown>
@@ -71,14 +64,12 @@ export function NavBar() {
                 Sobre
               </Nav.Link>
             </Nav>
-          </Navbar.Collapse>
-          <Navbar.Collapse id="menu">
-            <Nav className="navbar-nav">
+            <Nav className="navbar-nav ml-auto">
               <Nav.Link className="nav-link nav-item" href="/ajuda">
                 <FontAwesomeIcon icon={faQuestionCircle} />
               </Nav.Link>
               <Nav.Link className="nav-link nav-item" href="/carrinho">
-              <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
+                <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
                 {carrinho?.cartItems.length === 0 && (
                   <li className="d-flex justify-content-center">
                     vazio

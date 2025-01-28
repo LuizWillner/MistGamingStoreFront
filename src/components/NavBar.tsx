@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-// import useRecuperarItensCarrinho from "../hooks/useRecuperarItensCarrinho";
+import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faQuestionCircle,
@@ -8,20 +8,21 @@ import {
   faSignIn,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/mist-logo.png";
-import "../styles/App.css";
+import "../styles/Navbar.css";
 
 export function NavBar() {
-  /*
+  
   const {
-    data: itens_carrinhos,
-    isLoading: carregandoItens,
-    error: error,
-  } = useRecuperarItensCarrinho();
+    data: carrinho,
+    isLoading: carregandoCarrinho,
+    error: errorCarrinho,
+  } = useRecuperarCarrinho({cartId: 1, userId: 1});
   
 
-  if (carregandoItens) return <div>Carregando...</div>;
-  if (error) throw error;
-  */
+  if (carregandoCarrinho) return <div>Carregando...</div>;
+  // if (removendo) return null;
+  if (errorCarrinho) throw errorCarrinho;
+
 
   return (
     <>
@@ -36,7 +37,7 @@ export function NavBar() {
             <img
               className="d-none d-md-block"
               src={logo}
-              style={{ width: "25%" }}
+              style={{ width: "15%" }}
             />
           </Navbar.Brand>
           <Navbar.Toggle className="navbar-toggler" aria-controls="menu" />
@@ -71,27 +72,22 @@ export function NavBar() {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Collapse className="justify-content-end" id="menu">
+          <Navbar.Collapse id="menu">
             <Nav className="navbar-nav">
               <Nav.Link className="nav-link nav-item" href="/ajuda">
                 <FontAwesomeIcon icon={faQuestionCircle} />
               </Nav.Link>
-              {/* <Nav.Link className="nav-link nav-item" href="/carrinho">
-                {itens_carrinhos == undefined && (
+              <Nav.Link className="nav-link nav-item" href="/carrinho">
+              <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
+                {carrinho?.cartItems.length === 0 && (
                   <li className="d-flex justify-content-center">
-                    Carrinho vazio
+                    vazio
                   </li>
                 )}{" "}
-                <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
-                {itens_carrinhos != undefined && (
+                {carrinho?.cartItems.length !== 0 && (
                   <li className="d-flex justify-content-center">
                     R${" "}
-                    {itens_carrinhos!
-                      .reduce(
-                        (total, item) =>
-                          item.quantidade * item.ingresso.preco + total,
-                        0
-                      )
+                    {carrinho?.totalPrice
                       .toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
@@ -99,7 +95,7 @@ export function NavBar() {
                       })}
                   </li>
                 )}
-              </Nav.Link> */}
+              </Nav.Link>
               <Nav.Link className="nav-link nav-item" href="/login">
                 <FontAwesomeIcon icon={faSignIn} /> Entrar
               </Nav.Link>

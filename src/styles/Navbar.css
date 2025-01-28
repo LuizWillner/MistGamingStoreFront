@@ -1,0 +1,16 @@
+
+
+.navbar-background .nav-link,
+.navbar-background .navbar-brand,
+.navbar-background .navbar-nav .dropdown-menu {
+    color: var(--branco-fafafa) !important;
+}
+
+.navbar-background .nav-dropdown .dropdown-item {
+    color: var(--branco-fafafa) !important;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: center;
+}

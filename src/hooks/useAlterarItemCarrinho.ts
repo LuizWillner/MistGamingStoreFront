@@ -12,7 +12,7 @@ export const useAlterarItemCarrinho = () => {
     mutationFn: (cartItem: CartItem) => alterar(cartItem),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["carrinho", "item", "alterar"],
+        queryKey: ["carrinho", "item"],
       });
     },
   });

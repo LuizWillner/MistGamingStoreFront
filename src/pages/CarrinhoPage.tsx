@@ -142,8 +142,9 @@ export const CarrinhoPage = () => {
             <tr>
               <td colSpan={4}></td>
               <td className="align-middle text-end fw-bold" style={{ width: "15%" }}>
-                R${" "}
-                {carrinho?.totalPrice
+                &sum; R${" "}
+                {carrinho?.cartItems
+                  .reduce((total, item) => total + ((item.game.price * (1 - item.game.discount)) * item.quantity), 0)
                   .toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,

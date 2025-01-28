@@ -20,7 +20,7 @@ export const useRemoverCarrinho = (queryString: QueryString) => {
     }),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["usuario", "carrinho", queryString],
+        queryKey: ["carrinho"],
       });
     },
   });

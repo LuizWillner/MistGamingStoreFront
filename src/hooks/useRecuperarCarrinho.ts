@@ -12,7 +12,7 @@ export const useRecuperarCarrinho = (queryString: QueryString) => {
   const { recuperarCarrinho } = useAPICarrinho();
 
   return useQuery({
-    queryKey: ["usuario", "carrinho", queryString],
+    queryKey: ["carrinho", "item"],
     queryFn: () => recuperarCarrinho({
       params: {
         ...queryString

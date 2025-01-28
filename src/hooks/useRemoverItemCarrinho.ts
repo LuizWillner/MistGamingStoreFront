@@ -11,7 +11,7 @@ export const useRemoverItemCarrinho = () => {
     mutationFn: (id: number) => removerPorId(id),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["carrinho", "item", "remover"],
+        queryKey: ["carrinho", "item"],
       });
     },
   });

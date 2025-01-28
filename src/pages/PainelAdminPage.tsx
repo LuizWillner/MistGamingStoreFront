@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 import { CadastroGameForm } from "../components/CadastroGameForm";
 // import { Pesquisa } from "../components/Pesquisa";
 import { TabelaDeGames } from "../components/TabelaDeGames";
-// import { Paginacao } from "../components/Paginacao";
+import { Paginacao } from "../components/Paginacao";
 
 export const PainelAdminPage = () => {
   return (
@@ -21,7 +21,7 @@ export const PainelAdminPage = () => {
         </div>
         {/* <Pesquisa /> */}
         <TabelaDeGames />
-        {/* <Paginacao /> */}
+        <Paginacao />
       </Card>
     </>
   );

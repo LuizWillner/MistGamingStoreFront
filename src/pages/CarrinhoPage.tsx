@@ -74,11 +74,10 @@ export const CarrinhoPage = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="p-3">
         <button onClick={handleVoltar} className="btn btn-azul-nub mb-3">
           <FontAwesomeIcon icon={faArrowAltCircleLeft} /> Voltar
         </button>
-  
       </div>
       <div>
         <h5 className="mb-4 ms-3 w titulo-ingressos titulo-sessao-card">Carrinho</h5>

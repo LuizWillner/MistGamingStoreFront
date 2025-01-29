@@ -1,7 +1,6 @@
 import { Category } from "./category";
 
 export interface Game {
-  // TODO: Ingresso
   gameId?: number;
   name: string;
   image: string;

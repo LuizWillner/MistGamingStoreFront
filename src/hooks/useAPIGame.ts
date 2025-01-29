@@ -9,28 +9,6 @@ import CustomError from "../util/customError";
 export const useAPIGame = () => {
   const axiosInstance = useAxios();
 
-  //   const recuperarIngressoPorTituloFilme = (tituloFilme?: string) =>
-  //     axiosInstance
-  //       .get<Ingresso[]>(
-  //         URL_INGRESSOS + (tituloFilme ? "/sessao/" + tituloFilme : "")
-  //       )
-  //       .then((res) => res.data)
-  //       .catch((error) => {
-  //         if (error.response) {
-  //           // significa que o servidor respondeu, porém com erro
-  //           throw new CustomError(
-  //             error.response.data.message,
-  //             error.response.data.errorCode
-  //           );
-  //         } else if (error.request) {
-  //           // significa que a requisição foi enviada mas o servidor não respondeu
-  //           throw error;
-  //         } else {
-  //           // erro desconhecido
-  //           throw error;
-  //         }
-  //       });
-
   const recuperarGamePaginado = (config: AxiosRequestConfig) =>
     axiosInstance
       .get<ResultadoPaginado<Game>>(URL_GAME_PAGEABLE, config)
@@ -93,31 +71,10 @@ export const useAPIGame = () => {
           throw error;
         }
       });
-  //   const recuperarItensCarrinho = (idCarrinho: number) =>
-  //     axiosInstance
-  //       .get<Item_carrinho[]>(URL_ITEM + "/" + String(idCarrinho))
-  //       .then((res) => res.data)
-  //       .catch((error) => {
-  //         if (error.response) {
-  //           // significa que o servidor respondeu, porém com erro
-  //           throw new CustomError(
-  //             error.response.data.message,
-  //             error.response.data.errorCode
-  //           );
-  //         } else if (error.request) {
-  //           // significa que a requisição foi enviada mas o servidor não respondeu
-  //           throw error;
-  //         } else {
-  //           // erro desconhecido
-  //           throw error;
-  //         }
-  //       });
 
   return {
-    // recuperarIngressoPorTituloFilme,
     recuperarGamePaginado,
     recuperarGamePaginadoPorDesconto,
     recuperarGamePaginadoPorCategoria,
-    // recuperarItensCarrinho,
   };
 };

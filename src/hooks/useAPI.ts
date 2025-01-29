@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from "axios";
 import { useAxios } from "./useAxios";
 import CustomError from "../util/customError";
 

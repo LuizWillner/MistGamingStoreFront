@@ -9,10 +9,6 @@ interface QueryString {
   discountMax?: number;
 }
 
-// const pessoa1 = {nome: "Joao", salario: 5000};
-// const pessoa2 = {nome: "Lucia", salario: 3000};
-// const pessoa3 = {...pessoa1, secretaria: pessoa2};  // spread
-
 export const useGamesPaginadosPorDesconto = (query: QueryString) => {
   const { recuperarGamePaginadoPorDesconto } = useAPIGame();
 

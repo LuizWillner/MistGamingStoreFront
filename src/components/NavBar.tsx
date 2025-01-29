@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Nav, Navbar, NavDropdown, Dropdown } from "react-bootstrap";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +24,6 @@ export function NavBar() {
   
 
   if (carregandoCarrinho) return <div>Carregando...</div>;
-  // if (removendo) return null;
   if (errorCarrinho) throw errorCarrinho;
 
   const handleLogout = () => {

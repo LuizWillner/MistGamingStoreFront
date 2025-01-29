@@ -13,7 +13,6 @@ import { useCadastrarGame } from "../hooks/useCadastrarGame";
 import { useAlterarGame } from "../hooks/useAlterarGame";
 import { useCategorias } from "../hooks/useCategorias";
 import { useGameStore } from "../store/useGameStore";
-// import useAlterarProduto from "../hooks/useAlterarProduto";
 
 
 const { recuperar } = useAPI<Category>(URL_CATEGORY);
@@ -122,9 +121,9 @@ export const CadastroGameForm = () => {
       publisher: publisher,
       price: price,
       discount: discount,
-      releaseDate: dayjs(releaseDate, "DD/MM/YYYY").toDate(),  // TODO: Validar se funfa
+      releaseDate: dayjs(releaseDate, "DD/MM/YYYY").toDate(),
       stockQuantity: stockQuantity,
-      category: { categoryId: parseInt(category) } as Category,  // TODO: Valdiar se funfa
+      category: { categoryId: parseInt(category) } as Category,
     };
     reset();
     if (gameSelecionado?.gameId) {

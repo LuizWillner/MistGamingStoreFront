@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Game } from "../interfaces/game";
 import "../styles/GameCard.css";
 

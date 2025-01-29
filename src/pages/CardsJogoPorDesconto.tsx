@@ -1,7 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Game } from "../interfaces/game";
-import React from "react";
 import { useGamesPaginadosPorDesconto } from "../hooks/useGamesPaginadosPorDesconto";
 import { GameCard } from "../components/GameCard";
 import "../styles/SessaoDeCards.css";

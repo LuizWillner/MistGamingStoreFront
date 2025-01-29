@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/SessaoDeCards.css";
 import logo from "../assets/mist-logo.png";
 

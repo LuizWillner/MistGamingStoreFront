@@ -139,7 +139,7 @@ export const TabelaDeGames = () => {
           </thead>
           <tbody>
             {games.map((game, index) => (
-              <tr key={game.gameId} /*className={index % 2 === 0 ? 'table-light' : 'table-secondary'}*/>
+              <tr key={game.gameId} >
                 <td className="align-middle text-center">
                 <button
                     type="button"

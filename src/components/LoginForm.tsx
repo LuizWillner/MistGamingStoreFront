@@ -9,6 +9,7 @@ import { TokenResponse } from "../interfaces/tokenResponse";
 import { User } from "../interfaces/user";
 import { useUsuarioStore } from "../store/useUsuarioStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../styles/LoginForm.css";
 
 
 const schema = z.object({
@@ -78,59 +79,52 @@ export const LoginForm = () => {
   if (errorLogin) throw errorLogin;
 
   return (
-    <>
-      {tentouLogar && (
-        <div className="alert alert-danger fw-bold" role="alert">
-          Login inválido!
-        </div>
-      )}
-      <form autoComplete="off" onSubmit={handleSubmit(submit)}>
-        <div className="row mb-2">
-          <label htmlFor="email" className="col-lg-1 fw-bold mb-2">
-            Email
-          </label>
-          <div className="col-lg-5">
+    <div className="login-container">
+      <div className="login-form-wrapper">
+        {tentouLogar && (
+          <div className="alert alert-custom" role="alert">
+            Login inválido!
+          </div>
+        )}
+        
+        <form autoComplete="off" onSubmit={handleSubmit(submit)}>
+          <div className="row mb-4">
+            <label htmlFor="email" className="form-label-custom">
+              Email
+            </label>
             <input
               {...register("email")}
               type="text"
               id="email"
-              className={
-                errors.email
-                  ? "form-control form-control-sm is-invalid"
-                  : "form-control form-control-sm"
-              }
+              className={`form-input-custom ${errors.email ? 'is-invalid is-invalid-custom' : ''}`}
             />
-            <div className="invalid-feedback">{errors.email?.message}</div>
+            <div className="invalid-feedback-custom">
+              {errors.email?.message}
+            </div>
           </div>
-        </div>
 
-        <div className="row mb-3">
-          <label htmlFor="password" className="col-lg-1 fw-bold mb-2">
-            Senha
-          </label>
-          <div className="col-lg-5">
+          <div className="row mb-4">
+            <label htmlFor="password" className="form-label-custom">
+              Senha
+            </label>
             <input
               {...register("password")}
               type="password"
               id="password"
-              className={
-                errors.password
-                  ? "form-control form-control-sm is-invalid"
-                  : "form-control form-control-sm"
-              }
+              className={`form-input-custom ${errors.password ? 'is-invalid is-invalid-custom' : ''}`}
             />
-            <div className="invalid-feedback">{errors.password?.message}</div>
+            <div className="invalid-feedback-custom">
+              {errors.password?.message}
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="offset-lg-1 col-lg-5">
-            <button type="submit" className="btn btn-outline-primary">
+          <div className="d-flex justify-content-center">
+            <button type="submit" className="btn-entrar">
               <FontAwesomeIcon icon={faSignIn} /> Entrar
             </button>
           </div>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 };

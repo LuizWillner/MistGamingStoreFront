@@ -35,7 +35,7 @@ export const LoginForm = () => {
 
   useEffect(
     () => {
-      setFocus("email");
+      setFocus("email");  //!!!
       setTentouLogar(false);
       setUsuarioLogado("");
     }, 

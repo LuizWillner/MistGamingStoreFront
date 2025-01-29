@@ -11,9 +11,12 @@ interface UsuarioStore {
 
 
 export const useUsuarioStore = create<UsuarioStore>((set) => ({
-    usuarioLogado: "",
+    usuarioLogado: localStorage.getItem("usuarioLogado") || "",
     tentouLogar: false,
   
-    setUsuarioLogado: (usuario: string) => set(() => ({ usuarioLogado: usuario })),
+    setUsuarioLogado: (usuario: string) => {
+        localStorage.setItem("usuarioLogado", usuario);
+        set(() => ({ usuarioLogado: usuario }))
+    },
     setTentouLogar: (valor: boolean) => set(() => ({ tentouLogar: valor })),
 }));

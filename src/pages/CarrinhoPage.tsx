@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSyncAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
+import { Spinner } from "react-bootstrap";
 import { CartItem } from "../interfaces/cartItem";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { useRemoverCarrinho } from "../hooks/useRemoverCarrinho";
@@ -12,6 +14,7 @@ import "../styles/SessaoDeCards.css";
 
 export const CarrinhoPage = () => {
   const navigate = useNavigate();
+  const [removendoItemDoCarrinhoId, setremovendoItemDoCarrinhoId] = useState<number | null>(null);
 
   function handleChange(event: any, cartItem: CartItem) {
     cartItem.quantity = event.target.value;
@@ -40,11 +43,16 @@ export const CarrinhoPage = () => {
 
 
   const tratarRemocaoItem = (item: CartItem) => {
+    setremovendoItemDoCarrinhoId(item.cartItemId!);
     removerItemDoCarrinho(item.cartItemId!);
   };
 
   const tratarAlteracaoItemDoCarrinho = (item: CartItem) => {
-    alterarItem(item);
+    alterarItem(item, {
+      onSettled: () => {
+        setremovendoItemDoCarrinhoId(null);
+      },
+    });
   }
 
   const handleVoltar = () => {
@@ -115,8 +123,25 @@ export const CarrinhoPage = () => {
                   })}
                 </td>
                 <td className="col-1 align-middle text-center">
-                  <button onClick={() => tratarRemocaoItem(item!)} className="btn btn-danger btn-sm">
-                    <FontAwesomeIcon icon={faTrashAlt} />
+                  <button 
+                    onClick={() => tratarRemocaoItem(item!)}
+                    className="btn btn-danger btn-sm"
+                    disabled={removendoItemDoCarrinho}
+                  >
+                    {
+                      removendoItemDoCarrinhoId === item.cartItemId ? (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      ) 
+                    }
+
                   </button>
                 </td>
               </tr>

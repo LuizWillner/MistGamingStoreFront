@@ -1,11 +1,12 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown, Dropdown } from "react-bootstrap";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faShoppingCart,
   faSignIn,
+  faSignOut
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/mist-logo.png";
 import { useUsuarioStore } from "../store/useUsuarioStore";
@@ -14,6 +15,7 @@ import "../styles/Navbar.css";
 export function NavBar() {
 
   const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
+  const logout = useUsuarioStore((s) => s.logout);
   
   const {
     data: carrinho,
@@ -26,6 +28,10 @@ export function NavBar() {
   // if (removendo) return null;
   if (errorCarrinho) throw errorCarrinho;
 
+  const handleLogout = () => {
+    logout();
+    window.location.reload(); // Recarrega a página após o logout
+  };
 
   return (
     <>
@@ -90,9 +96,19 @@ export function NavBar() {
                 </div>
               </Nav.Link>
               {usuarioLogado ? (
-                <Nav.Link className="nav-link nav-item" href="/user">
-                  <FontAwesomeIcon icon={faUser} /> {/*Usuário*/}
-                </Nav.Link>
+                <Dropdown>
+                  <Dropdown.Toggle as={Nav.Link} className="nav-link nav-item">
+                    <FontAwesomeIcon icon={faUser} /> {/*Usuário*/}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu align="end">
+                    <Dropdown.ItemText>{usuarioLogado}</Dropdown.ItemText>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={handleLogout}>
+                    <FontAwesomeIcon icon={faSignOut} /> Logout
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               ) : (
                 <Nav.Link className="nav-link nav-item" href="/login">
                   <FontAwesomeIcon icon={faSignIn} /> {/* Entrar */}

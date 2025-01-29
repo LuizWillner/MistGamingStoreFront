@@ -69,31 +69,33 @@ export function NavBar() {
             </Nav>
             <Nav className="navbar-nav ml-auto">
               <Nav.Link className="nav-link nav-item" href="/carrinho">
-                <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
-                {carrinho?.cartItems.length === 0 && (
-                  <li className="d-flex justify-content-center">
-                    vazio
-                  </li>
-                )}{" "}
-                {carrinho?.cartItems.length !== 0 && (
-                  <li className="d-flex justify-content-center">
-                    R${" "}
-                    {carrinho?.totalPrice
-                      .toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                        useGrouping: true,
-                      })}
-                  </li>
-                )}
+                <div className="d-flex flex-column">
+                  <FontAwesomeIcon icon={faShoppingCart} /> {/*Carrinho*/}
+                  {carrinho?.cartItems.length === 0 && (
+                    <span className="d-flex justify-content-center">
+                      vazio
+                    </span>
+                  )}{" "}
+                  {carrinho?.cartItems.length !== 0 && (
+                    <span className="d-flex justify-content-center">
+                      R${" "}
+                      {carrinho?.totalPrice
+                        .toLocaleString("pt-BR", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                          useGrouping: true,
+                        })}
+                    </span>
+                  )}
+                </div>
               </Nav.Link>
               {usuarioLogado ? (
                 <Nav.Link className="nav-link nav-item" href="/user">
-                  <FontAwesomeIcon icon={faUser} /> Usuário
+                  <FontAwesomeIcon icon={faUser} /> {/*Usuário*/}
                 </Nav.Link>
               ) : (
                 <Nav.Link className="nav-link nav-item" href="/login">
-                  <FontAwesomeIcon icon={faSignIn} /> Entrar
+                  <FontAwesomeIcon icon={faSignIn} /> {/* Entrar */}
                 </Nav.Link>
               )
               }

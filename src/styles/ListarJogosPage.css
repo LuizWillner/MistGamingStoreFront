@@ -1,0 +1,12 @@
+.side-menu {
+    color: var(--branco-fafafa) !important;
+}
+
+.side-menu:hover {
+    color: var(--azul-nub-100) !important; /* Troque 'blue' pela cor desejada no hover */
+}
+
+.nav-link.active {
+    background-color: var(--azul-nub-400) !important; /* Troque 'blue' pela cor desejada */
+    color: white; /* Troque 'white' pela cor desejada para o texto */
+}

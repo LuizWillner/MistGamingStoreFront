@@ -7,6 +7,7 @@ interface UsuarioStore {
   
     setUsuarioLogado: (usuario: string) => void;
     setTentouLogar: (valor: boolean) => void;
+    logout: () => void;
 }
 
 
@@ -18,5 +19,11 @@ export const useUsuarioStore = create<UsuarioStore>((set) => ({
         localStorage.setItem("usuarioLogado", usuario);
         set(() => ({ usuarioLogado: usuario }))
     },
+
     setTentouLogar: (valor: boolean) => set(() => ({ tentouLogar: valor })),
+
+    logout: () => {
+        localStorage.removeItem("usuarioLogado");
+        set(() => ({ usuarioLogado: "" }));
+      },
 }));

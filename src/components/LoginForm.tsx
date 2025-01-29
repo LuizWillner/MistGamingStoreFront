@@ -24,6 +24,7 @@ export const LoginForm = () => {
   const setUsuarioLogado = useUsuarioStore((s) => s.setUsuarioLogado);
   const setTentouLogar = useUsuarioStore((s) => s.setTentouLogar);
   const tentouLogar = useUsuarioStore((s) => s.tentouLogar);
+  const logout = useUsuarioStore((s) => s.logout);
 
   const {
     mutate: efetuarLogin,
@@ -37,7 +38,7 @@ export const LoginForm = () => {
     () => {
       setFocus("email");  //!!!
       setTentouLogar(false);
-      setUsuarioLogado("");
+      logout();
     }, 
     []
   );

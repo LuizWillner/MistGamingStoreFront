@@ -7,7 +7,7 @@ export const GameCard = (game: Game) => {
   const navigate = useNavigate();
 
   const detalhesGame = (game: Game) => {
-    navigate(`/detalhesGame`, { state: { data: game } });
+    navigate(`/detalhesGame/${game.name}`, { state: { data: game } });
   };
 
   return (

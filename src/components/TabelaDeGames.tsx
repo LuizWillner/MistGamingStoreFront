@@ -6,14 +6,17 @@ import { useRemoverGame } from "../hooks/useRemoverGame";
 import { useGamesPaginadosPorCategoria } from "../hooks/useGamesPaginadoPorCategoria";
 import { useGamesPaginado } from "../hooks/useGamesPaginado";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
+import { faTrashAlt, faSort, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { Spinner } from "react-bootstrap";
-
+import "../styles/TabelaDeGames.css";
+import { render } from "react-dom";
 
 
 export const TabelaDeGames = () => {
 
     const [removendoGameId, setRemovendoGameId] = useState<number | null>(null);
+    const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+    const [sortColumn, setSortColumn] = useState<string>("gameId");
 
     const page = useGameStore(s => s.pagina);
     const size = useGameStore(s => s.tamanho);
@@ -34,7 +37,7 @@ export const TabelaDeGames = () => {
       data: gamesPaginados,
       isLoading: carregandoGames,
       error: errorGames,
-    } = useGamesPaginado({page, size, name});
+    } = useGamesPaginado({page, size, name, sort: sortColumn, order: sortOrder});
 
     if (carregandoGames) return <h6>Carregando...</h6>;
     if (errorGames) throw errorGames;
@@ -54,23 +57,83 @@ export const TabelaDeGames = () => {
 
     const tratarGameSelecionado = (game: Game) => setGameSelecionado(game);
 
+    const handleSort = (column: string) => {
+      if (sortColumn === column) {
+        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+      } else {
+        setSortColumn(column);
+        setSortOrder("asc");
+      }
+      setPagina(0); // Resetar para a primeira página ao ordenar
+    }
+
+    const renderSortIcon = (column: string) => {
+      if (sortColumn !== column) {
+        return <FontAwesomeIcon icon={faSort} />;
+      }
+      if (sortOrder === "asc") {
+        return <FontAwesomeIcon icon={faSortUp} />;
+      }
+      return <FontAwesomeIcon icon={faSortDown} />;
+    };
+
     return (
       <div className="table-responsive">
         <table className="table table-striped table-hover table-bordered table-sm rounded">
         
           <thead>
             <tr>
-              <th className="align-middle text-center">Id</th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("gameId")}
+              >
+                Id {renderSortIcon("gameId")}
+              </th>
               <th className="align-middle text-center">Imagem</th>
-              <th className="align-middle text-center">Nome</th>
-              <th className="align-middle text-center">Desenvolvedora</th>
-              <th className="align-middle text-center">Publicadora</th>
-              <th className="align-middle text-center">Categoria</th>
-              <th className="align-middle text-center">Lançamento</th>
-              <th className="align-middle text-center">Preço cheio</th>
-              <th className="align-middle text-center">Desconto</th>
-              <th className="align-middle text-center">Preço descontado</th>
-              <th className="align-middle text-center">Estoque</th>
+              <th className="align-middle text-center sort-column" 
+                onClick={() => handleSort("name")}
+              >
+                Nome {renderSortIcon("name")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("developer")}
+              >
+                Desenvolvedora {renderSortIcon("developer")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("publisher")}
+              >
+                Publicadora {renderSortIcon("publisher")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("category")} 
+              >
+                Categoria {renderSortIcon("category")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("releaseDate")} 
+              >
+                Lançamento {renderSortIcon("releaseDate")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("price")}
+              >
+                Preço cheio {renderSortIcon("price")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("discount")}
+              >
+                Desconto {renderSortIcon("discount")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("discountPrice")}
+              >
+                Preço descontado {renderSortIcon("discountPrice")}
+              </th>
+              <th className="align-middle text-center sort-column"
+                onClick={() => handleSort("stockQuantity")}
+              >
+                Estoque {renderSortIcon("stockQuantity")}
+              </th>
               <th className="align-middle text-center">Ação</th>
             </tr>
           </thead>

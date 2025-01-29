@@ -17,7 +17,7 @@ export const Paginacao = () => {
     data: gamesPaginados,
     isLoading: carregandoGames,
     error: errorGames,
-  } = useGamesPaginado({ page, size, name });
+  } = useGamesPaginado({ page, size, name, sort: "name", order: "asc" });
 
 
     if (carregandoGames) return <h6>Carregando...</h6>;

@@ -5,6 +5,8 @@ interface QueryString {
     page: number;
     size: number;
     name: string;
+    sort: string;
+    order: string;
 }
 
 export const useGamesPaginado = (queryString: QueryString) => {

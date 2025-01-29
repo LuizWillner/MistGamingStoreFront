@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
-import loginIcon from "../assets/skin/login.png";
+import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { useEfetuarLogin } from "../hooks/useEfetuarLogin";
 import { TokenResponse } from "../interfaces/tokenResponse";
 import { User } from "../interfaces/user";
 import { useUsuarioStore } from "../store/useUsuarioStore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const schema = z.object({
@@ -124,7 +125,7 @@ export const LoginForm = () => {
         <div className="row">
           <div className="offset-lg-1 col-lg-5">
             <button type="submit" className="btn btn-outline-primary">
-              <img src={loginIcon} /> Entrar
+              <FontAwesomeIcon icon={faSignIn} /> Entrar
             </button>
           </div>
         </div>

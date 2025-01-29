@@ -29,6 +29,9 @@
 
   /* Tons de verde */
   --verde-check: #62b84d;
+
+  /* Tons de vermelho */
+  --vermelho-erro: #df5557;
 }
 
 body {

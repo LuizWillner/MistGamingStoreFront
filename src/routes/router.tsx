@@ -8,13 +8,15 @@ import { DetalhesGame } from "../pages/DetalhesGame";
 import { PainelAdminPage } from "../pages/PainelAdminPage";
 import { SobrePage } from "../pages/SobrePage";
 import { CarrinhoPage } from "../pages/CarrinhoPage";
-// import ErrorPage from "../pages/ErrorPage";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { LoginPage } from "../pages/LoginPage";
+import { ErrorPage } from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "",
@@ -37,9 +39,17 @@ export const router = createBrowserRouter([
         ],
       },
       { path: "detalhesGame", element: <DetalhesGame /> },
-      { path: "painel-admin", element: <PainelAdminPage /> },
       { path: "sobre", element: <SobrePage /> },
-      { path: "carrinho", element: <CarrinhoPage /> },
+      { path: "login", element: <LoginPage /> },
     ],
   },
+  {
+    path: "/",
+    element: <PrivateRoutes />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "painel-admin", element: <PainelAdminPage /> },
+      { path: "carrinho", element: <CarrinhoPage /> },
+    ],
+  }
 ]);

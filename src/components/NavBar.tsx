@@ -1,16 +1,21 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown, Dropdown } from "react-bootstrap";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faQuestionCircle,
+  faUser,
   faShoppingCart,
   faSignIn,
+  faSignOut
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/mist-logo.png";
+import { useUsuarioStore } from "../store/useUsuarioStore";
 import "../styles/Navbar.css";
 
 export function NavBar() {
+
+  const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
+  const logout = useUsuarioStore((s) => s.logout);
   
   const {
     data: carrinho,
@@ -23,6 +28,10 @@ export function NavBar() {
   // if (removendo) return null;
   if (errorCarrinho) throw errorCarrinho;
 
+  const handleLogout = () => {
+    logout();
+    window.location.reload(); // Recarrega a página após o logout
+  };
 
   return (
     <>
@@ -66,27 +75,46 @@ export function NavBar() {
             </Nav>
             <Nav className="navbar-nav ml-auto">
               <Nav.Link className="nav-link nav-item" href="/carrinho">
-                <FontAwesomeIcon icon={faShoppingCart} /> Carrinho
-                {carrinho?.cartItems.length === 0 && (
-                  <li className="d-flex justify-content-center">
-                    vazio
-                  </li>
-                )}{" "}
-                {carrinho?.cartItems.length !== 0 && (
-                  <li className="d-flex justify-content-center">
-                    R${" "}
-                    {carrinho?.totalPrice
-                      .toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                        useGrouping: true,
-                      })}
-                  </li>
-                )}
+                <div className="d-flex flex-column">
+                  <FontAwesomeIcon icon={faShoppingCart} /> {/*Carrinho*/}
+                  {carrinho?.cartItems.length === 0 && (
+                    <span className="d-flex justify-content-center">
+                      vazio
+                    </span>
+                  )}{" "}
+                  {carrinho?.cartItems.length !== 0 && (
+                    <span className="d-flex justify-content-center">
+                      R${" "}
+                      {carrinho?.totalPrice
+                        .toLocaleString("pt-BR", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                          useGrouping: true,
+                        })}
+                    </span>
+                  )}
+                </div>
               </Nav.Link>
-              <Nav.Link className="nav-link nav-item" href="/login">
-                <FontAwesomeIcon icon={faSignIn} /> Entrar
-              </Nav.Link>
+              {usuarioLogado ? (
+                <Dropdown>
+                  <Dropdown.Toggle as={Nav.Link} className="nav-link nav-item">
+                    <FontAwesomeIcon icon={faUser} /> {/*Usuário*/}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu align="end">
+                    <Dropdown.ItemText>{usuarioLogado}</Dropdown.ItemText>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={handleLogout}>
+                    <FontAwesomeIcon icon={faSignOut} /> Logout
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ) : (
+                <Nav.Link className="nav-link nav-item" href="/login">
+                  <FontAwesomeIcon icon={faSignIn} /> {/* Entrar */}
+                </Nav.Link>
+              )
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>

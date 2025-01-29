@@ -12,12 +12,14 @@ import { Game } from "../interfaces/game";
 import { CartItemPost } from "../interfaces/cartItem";
 import { useAdicionarItemCarrinho } from "../hooks/useAdicionarItemCarrinho";
 import "../styles/GameCard.css";
+import { useUsuarioStore } from "../store/useUsuarioStore";
 
 
 export const DetalhesGame = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [addedToCart, setAddedToCart] = useState(false);
+    const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
 
     var game = location.state.data;
     console.log(game.trailer);
@@ -25,6 +27,10 @@ export const DetalhesGame = () => {
     const { mutate: cadastrarCartItem, error: errorCadastrarCartItem } = useAdicionarItemCarrinho();
 
     const tratarAdicionarGameAoCarrinho = (game: Game) => {
+      if (!usuarioLogado) {
+        navigate('/login');
+        return;
+      }
       const newCartItem: CartItemPost = {
         cartId: 1,
         userId: 1,

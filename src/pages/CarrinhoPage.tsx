@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSyncAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faTrashAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowAltCircleLeft";
 import { Spinner } from "react-bootstrap";
 import { CartItem } from "../interfaces/cartItem";
+import { Cart } from "../interfaces/cart";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
-import { useRemoverCarrinho } from "../hooks/useRemoverCarrinho";
+import { useComprarCarrinho } from "../hooks/useComprarCarrinho";
 import { useRemoverItemCarrinho } from "../hooks/useRemoverItemCarrinho";
 import { useAlterarItemCarrinho } from "../hooks/useAlterarItemCarrinho";
 import "../styles/SessaoDeCards.css";
@@ -41,6 +42,13 @@ export const CarrinhoPage = () => {
     error: errorAlterarItem
   } = useAlterarItemCarrinho();
 
+  const {
+    data: carrinhoComprado,
+    mutate: comprarCarrinho,
+    isLoading: comprandoCarrinho,
+    error: errorComprarCarrinho
+  } = useComprarCarrinho({cartId: 1, userId: 1});
+
 
   const tratarRemocaoItem = (item: CartItem) => {
     setremovendoItemDoCarrinhoId(item.cartItemId!);
@@ -53,6 +61,11 @@ export const CarrinhoPage = () => {
         setremovendoItemDoCarrinhoId(null);
       },
     });
+  }
+
+  const tratarCompraCarrinho = (carrinho: Cart) => {
+    comprarCarrinho({cartId: carrinho.cartId!, userId: carrinho.user.userId!});
+    window.location.reload();
   }
 
   const handleVoltar = () => {
@@ -164,6 +177,15 @@ export const CarrinhoPage = () => {
             </tr>
           </tfoot>
         </table>
+      </div>
+      <div className="p-3">
+        {
+          (carrinho?.cartItems.length !== 0) && (
+            <button onClick={() => tratarCompraCarrinho(carrinho!)} className="btn btn-success mb-3">
+              <FontAwesomeIcon icon={faCreditCard} /> Pagar
+            </button>
+          )
+        }
       </div>
   
     </>

@@ -3,14 +3,17 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useRecuperarCarrinho } from "../hooks/useRecuperarCarrinho";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faQuestionCircle,
+  faUser,
   faShoppingCart,
   faSignIn,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/mist-logo.png";
+import { useUsuarioStore } from "../store/useUsuarioStore";
 import "../styles/Navbar.css";
 
 export function NavBar() {
+
+  const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
   
   const {
     data: carrinho,
@@ -84,9 +87,16 @@ export function NavBar() {
                   </li>
                 )}
               </Nav.Link>
-              <Nav.Link className="nav-link nav-item" href="/login">
-                <FontAwesomeIcon icon={faSignIn} /> Entrar
-              </Nav.Link>
+              {usuarioLogado ? (
+                <Nav.Link className="nav-link nav-item" href="/user">
+                  <FontAwesomeIcon icon={faUser} /> Usuário
+                </Nav.Link>
+              ) : (
+                <Nav.Link className="nav-link nav-item" href="/login">
+                  <FontAwesomeIcon icon={faSignIn} /> Entrar
+                </Nav.Link>
+              )
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>

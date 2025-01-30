@@ -146,7 +146,7 @@ export const DetalhesGame = () => {
                                     </span>
                                 </p>
                             ) : (
-                                <p className="card-text default-price-badge-detail">
+                                <p className="card-text default-price-badge-detalhes">
                                     <strong>
                                         R${game.price.toLocaleString("pt-BR", {
                                             minimumFractionDigits: 2,

@@ -34,7 +34,16 @@
   font-weight: 500; /* Texto em negrito */
 }
 
-.default-price-badge-detail {
+.default-price-badge {
+  display: inline-block;
+  background-color: var(--azul-claro-200);
+  padding: 0.2rem 0.5rem; /* Ajuste o padding conforme necessário */
+  border-radius: 4px; /* Borda arredondada */
+  /* margin-left: 0.75rem; */
+  font-weight: 500; /* Texto em negrito */
+}
+
+.default-price-badge-detalhes {
   display: inline-block;
   background-color: var(--azul-claro-200);
   padding: 0.2rem 0.5rem; /* Ajuste o padding conforme necessário */

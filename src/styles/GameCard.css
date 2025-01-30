@@ -41,6 +41,7 @@
   border-radius: 4px; /* Borda arredondada */
   /* margin-left: 0.75rem; */
   font-weight: 500; /* Texto em negrito */
+  font-size: 1.5rem !important;
 }
 
 .discount-badge {
@@ -52,12 +53,30 @@
   font-weight: 500; /* Texto em negrito */
 }
 
+.discount-badge-detalhes {
+  display: inline-block;
+  background-color: var(--verde-check);
+  padding: 0.2rem 0.5rem; /* Ajuste o padding conforme necessário */
+  border-radius: 4px; /* Borda arredondada */
+  margin-left: 0.75rem;
+  font-weight: 500; /* Texto em negrito */
+  font-size: 1.5rem !important;
+}
+
 .discount-value {
   display: inline-block;
   color: var(--verde-check); /* Cor do texto */
   text-decoration: none !important; /* Remove o sublinhado */
   margin-left: 0.25rem;
   font-size: 0.85rem;
+}
+
+.discount-value-detalhes {
+  display: inline-block;
+  color: var(--verde-check); /* Cor do texto */
+  text-decoration: none !important; /* Remove o sublinhado */
+  margin-left: 0.5rem;
+  font-size: 1rem !important;
 }
 
 .stock-middle {
@@ -73,4 +92,14 @@
   color: var(--branco-fafafa); /* Cor do texto */
   padding: 1.2rem; /* Espaçamento interno */
   border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+.text-removido-com-sucesso {
+  background-color: var(--vermelho-erro) !important;
+  color: var(--branco-fafafa) !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }

@@ -28,7 +28,7 @@ export const HomePage = () => {
         <Carousel.Item>
           <img
             className="d-block mx-auto carousel-image"
-            src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/03/The-Last-Of-Us-Abby-Golf-Club.jpg"
+            src="https://kanto.legiaodosherois.com.br/w1200-q95-k1/wp-content/uploads/2021/03/legiao_1MwyurOQ9GNP.jpg.webp"
           />
           <Carousel.Caption>
             <h3 className="carousel-text">

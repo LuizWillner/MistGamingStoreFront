@@ -74,13 +74,13 @@ export function NavBar() {
             <Nav className="navbar-nav ml-auto">
               <Nav.Link className="nav-link nav-item" href="/carrinho">
                 <div className="d-flex flex-column">
-                  <FontAwesomeIcon icon={faShoppingCart} /> {/*Carrinho*/}
-                  {carrinho?.cartItems.length === 0 && (
+                  <FontAwesomeIcon icon={faShoppingCart} className="pt-1"/> {/*Carrinho*/}
+                  {carrinho?.cartItems.length === 0 && usuarioLogado && (
                     <span className="d-flex justify-content-center">
                       vazio
                     </span>
                   )}{" "}
-                  {carrinho?.cartItems.length !== 0 && (
+                  {carrinho?.cartItems.length !== 0 && usuarioLogado && (
                     <span className="d-flex justify-content-center">
                       R${" "}
                       {carrinho?.totalPrice

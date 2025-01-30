@@ -55,11 +55,19 @@ export const DetalhesGame = () => {
     };
 
     const tratarRemocaoGame = (gameId: number) => {
+        if (!usuarioLogado) {
+            navigate('/login');
+            return;
+        }
         removerGame(gameId);
         setDisabled(true);
     }
 
     const tratarGameSelecionado = (game: Game) => {
+        if (!usuarioLogado) {
+            navigate('/login');
+            return;
+        }
         setGameSelecionado(game);
         navigate("/painel-admin")
     }

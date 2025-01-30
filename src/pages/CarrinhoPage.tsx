@@ -65,8 +65,8 @@ export const CarrinhoPage = () => {
 
   const tratarCompraCarrinho = (carrinho: Cart) => {
     comprarCarrinho({cartId: carrinho.cartId!, userId: carrinho.user.userId!});
-    navigate("/");
     window.location.reload();
+    //navigate("/");
   }
 
   const handleVoltar = () => {

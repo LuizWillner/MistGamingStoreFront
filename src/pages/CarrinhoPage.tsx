@@ -65,8 +65,8 @@ export const CarrinhoPage = () => {
 
   const tratarCompraCarrinho = (carrinho: Cart) => {
     comprarCarrinho({cartId: carrinho.cartId!, userId: carrinho.user.userId!});
+    // window.location.reload();
     navigate("/");
-    window.location.reload();
   }
 
   const handleVoltar = () => {
@@ -78,6 +78,7 @@ export const CarrinhoPage = () => {
 
   if (carregandoCarrinho) return <div>Carregando...</div>;
   if (errorAlterarItem) throw errorAlterarItem;
+  if (comprandoCarrinho) return <div>Comprando...</div>;
 
   return (
     <>

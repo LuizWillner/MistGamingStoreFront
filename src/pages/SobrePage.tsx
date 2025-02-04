@@ -12,33 +12,33 @@ export const SobrePage = () => {
           style={{ width: "350px" }}
         />
       </div>
-        <div>
-          <p className="w text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et lacus
-            eget massa blandit dictum ut ut lorem. Quisque nec ultrices sapien, eu
-            commodo ligula. Donec commodo dignissim vestibulum. Vivamus eu mattis
-            nulla, at molestie dui. Proin lacus est, aliquet id ullamcorper vitae,
-            eleifend sit amet neque. Aenean urna mi, ultricies eget magna eu,
-            placerat pretium nunc. Suspendisse facilisis, ligula et faucibus
-            blandit, quam lacus laoreet velit, nec congue quam risus id metus. Nam
-            vulputate tincidunt consectetur. Etiam vitae ligula congue, commodo
-            risus sit amet, convallis tortor. Cras tempus pretium tempor. Vivamus
-            lectus enim, tincidunt vel magna ut, vehicula vehicula metus. Integer
-            vehicula fermentum nisi id tristique. Quisque non lobortis risus, id
-            ultricies nisl. Sed vehicula sem at lectus laoreet posuere.
-          </p>
-          <p className="w text-center">
-            Sed ex tortor, lobortis eu viverra et, mattis a nisi. Duis et rhoncus
-            ante. Nam eget lacus urna. Quisque id massa id urna interdum bibendum.
-            Sed eleifend ipsum ligula, id facilisis tortor gravida id. Cras sit
-            amet laoreet nisl. Pellentesque habitant morbi tristique senectus et
-            netus et malesuada fames ac turpis egestas. Phasellus et tempor odio.
-            Quisque nec mattis sem. Cras volutpat, arcu consequat cursus suscipit,
-            ante nulla vestibulum nulla, et ornare arcu ipsum auctor augue.
-            Vestibulum lorem sem, molestie ut lorem ut, tincidunt auctor urna.
-            Cras a metus vel ante sodales aliquet at eget orci
-          </p>
-        </div>
+      <div>
+        <p className="w text-center">
+          A <strong>Mist Gaming Store</strong> nasceu da paixão de um grupo de entusiastas por
+          jogos de PC que perceberam uma lacuna no mercado: a dificuldade de
+          encontrar uma plataforma confiável que reunisse tanto títulos
+          clássicos quanto lançamentos, com preços justos e suporte
+          diferenciado. A ideia surgiu em um fórum de discussão sobre games,
+          onde os fundadores debatiam como muitas lojas online priorizavam
+          apenas grandes lançamentos e deixavam de lado títulos independentes ou
+          menos populares. Com isso em mente, eles decidiram criar uma loja que
+          fosse mais do que um simples marketplace — uma comunidade para gamers
+          explorarem novas experiências e compartilharem suas paixões.
+        </p>
+        <p className="w text-center">
+          O principal objetivo da Mist Gaming Store é oferecer uma seleção
+          diversificada de jogos para todos os perfis de jogadores, desde os
+          casuais até os hardcore, sempre com promoções justas e uma curadoria
+          cuidadosa para destacar títulos que merecem atenção. Além disso, a
+          loja aposta em um sistema de recomendações baseado nos gostos dos
+          usuários e mantém um blog com análises, guias e entrevistas com
+          desenvolvedores. Uma curiosidade interessante é que o nome "Mist"
+          (névoa, em inglês) foi escolhido para simbolizar a emoção da
+          descoberta—assim como em um jogo de exploração, onde novos mundos se
+          revelam conforme o jogador avança, a Mist Gaming Store busca
+          proporcionar essa sensação a cada visita.
+        </p>
+      </div>
     </>
   );
 };

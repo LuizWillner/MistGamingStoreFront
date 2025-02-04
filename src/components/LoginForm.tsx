@@ -83,7 +83,7 @@ export const LoginForm = () => {
       <div className="login-form-wrapper">
         {tentouLogar && (
           <div className="alert alert-custom" role="alert">
-            Login inválido!
+            Email e/ou senha inválidos.
           </div>
         )}
         

@@ -5,22 +5,20 @@ import { useAPIGame } from "./useAPIGame";
 
 interface QueryString {
   size: number;
-  discountMin?: number;
-  discountMax?: number;
+  categoryName?: string;
 }
 
-export const useGamesPaginadosPorDesconto = (query: QueryString) => {
-  const { recuperarGamePaginadoPorDesconto } = useAPIGame();
+export const useGamesPaginadosPorCategoria = (query: QueryString) => {
+  const { recuperarGamePaginadoPorCategoria } = useAPIGame();
 
   return useInfiniteQuery<ResultadoPaginado<Game>>({
-    queryKey: ["games", "desconto", "paginacao", query],
+    queryKey: ["games", "categoria", "paginacao", query],
     queryFn: ({ pageParam = 0 }) =>
-      recuperarGamePaginadoPorDesconto({
+      recuperarGamePaginadoPorCategoria({
         params: {
           page: pageParam,
           size: query.size,
-          discountMin: query.discountMin,
-          discountMax: query.discountMax,
+          categoryName: query.categoryName,
         },
       }),
     staleTime: 10_000,

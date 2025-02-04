@@ -1,0 +1,6 @@
+.titulo-sessao-card {
+    font-size: 1.875rem;
+    border-left: 4px solid var(--azul-claro-200);
+    padding-left: 10px;
+    margin-bottom: 20px;
+}

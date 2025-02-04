@@ -1,0 +1,43 @@
+.carousel-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  position: relative;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  color: white;
+  z-index: 2; /* Certifique-se de que o texto esteja acima do gradiente */
+}
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1; /* Gradiente abaixo do texto */
+}
+
+.carousel-item img {
+  position: relative;
+  z-index: 0; /* Imagem abaixo do gradiente */
+}
+.card-detalhe {
+  margin: 20px;  
+  padding: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+}
+
+.carousel-text-container {
+  z-index: 2;
+}
+

@@ -1,10 +1,10 @@
 import { Category } from "./category";
 
 export interface Game {
-  // TODO: Ingresso
   gameId?: number;
   name: string;
   image: string;
+  trailer: string;
   description: string;
   developer: string;
   publisher: string;
@@ -12,6 +12,6 @@ export interface Game {
   discount: number;
   releaseDate: Date;
   stockQuantity: number;
-  createdAt: Date;
+  createdAt?: Date;
   category: Category;
 }

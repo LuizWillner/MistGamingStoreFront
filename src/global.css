@@ -18,6 +18,7 @@
   --azul-nub-400: #6393a6;
 
   /* Tons de azul claro */
+  --azul-claro-000: #0D6EFD;
   --azul-claro-200: #7ebed8;
   --azul-claro-500: #94e1f2;
   --verde-agua: #aef2eb;
@@ -25,6 +26,12 @@
   /* Tons de branco */
   --branco-fafafa: #fafafa;
   --branco-azulado: #d1e6ea;
+
+  /* Tons de verde */
+  --verde-check: #62b84d;
+
+  /* Tons de vermelho */
+  --vermelho-erro: #df5557;
 }
 
 body {
@@ -45,4 +52,12 @@ button {
   font: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1rem; /* 1 unidade relativa do tamanho de fonte padrão do HTML, que é 16px */
+}
+
+.btn-azul-nub {
+  background-color: var(--azul-nub-350) !important;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  margin: auto;
 }
